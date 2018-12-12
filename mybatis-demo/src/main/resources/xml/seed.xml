@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tree.mapper.SeedMapper">
+	
+	<resultMap type="com.tree.entity.Seed" id="resMap">
+		<id column="id" property="id" jdbcType="INTEGER"/>
+		<result column="name" property="name" jdbcType="VARCHAR"/>
+		<result column="is_alive" property="isAlive" jdbcType="INTEGER"/>
+	</resultMap>
+	
+	<sql id="column">
+		seed.id			id,
+		seed.name		name,
+		seed.is_alive	is_alive
+	</sql>
+
+	<select id="selectById" resultMap="resMap">
+		select 
+			<include refid="column"></include>
+		from 
+			seed 
+		where
+			id=#{id}
+	</select>
+	
+	
+	<select id="selectByTreeId" parameterType="java.lang.Integer" resultMap="resMap">
+		select 
+			<include refid="column"></include>
+		from 
+			seed
+		where 
+			1=1
+		and exists(
+			
+			select 
+				'X'
+			from 
+				map_tree_seed
+			where 
+				map_tree_seed.seed_id = seed.id
+			and
+				map_tree_seed.tree_id = #{treeId} 
+		)
+			
+	</select>
+	
+</mapper>

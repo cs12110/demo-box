@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.tree.mapper.TreeMapper">
+	
+	<resultMap type="com.tree.entity.Tree" id="resMap">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="name" property="name" jdbcType="VARCHAR" />
+	</resultMap>
+	
+	<!-- 关联 collection里面的select调用相关查询方法 -->
+	<resultMap id="extMap" type="com.tree.entity.Tree" extends="resMap">
+		<collection property="seedList" 
+				   select="com.tree.mapper.SeedMapper.selectByTreeId" 
+				   column="id"></collection>
+	</resultMap>
+
+	
+	<sql id="column">
+		tree.id		id,
+		tree.name	name
+	</sql>
+	
+	
+	<!-- 使用extMap,而不是resMap -->
+	<select id="selectById" resultMap="extMap">
+		select
+			<include refid="column"></include> 
+		from 
+			tree 
+		where 
+			id=#{id}
+	</select>
+</mapper>
