@@ -13,15 +13,16 @@
 
 ## 1. 项目说明
 
-|项目名称 | 备注   |
-| ----- |    ---  |
-| mongo-demo |Java使用mongodb的样例,包含简单的增删改查代码.|
-| mybatis-demo|Java使用Mybatis样例.|
-|mybatis-reader|用于mybatis的源码阅读.|
-|redis-demo |Java使用redis样例 |
-|simple-dic |道词典的解释,基于html5的android的一个很简单的apk|
-|spider-demo |Java使用HttpClient的网络爬虫例子|
-|netty-service |Netty的http service的简单使用|
+| 项目名称             | 备注                                             |
+| -------------------- | ------------------------------------------------ |
+| mongo-demo           | Java使用mongodb的样例,包含简单的增删改查代码.    |
+| mybatis-demo         | Java使用Mybatis样例.                             |
+| mybatis-reader       | 用于mybatis的源码阅读.                           |
+| redis-demo           | Java使用redis样例                                |
+| simple-dic           | 道词典的解释,基于html5的android的一个很简单的apk |
+| spider-demo          | Java使用HttpClient的网络爬虫例子                 |
+| netty-service        | Netty的http service的简单使用                    |
+| elastaticsearch-demo | 全文检索                                         |
 
 ---
 
